@@ -1,9 +1,9 @@
-package domain.model;
+package com.liverpool.orders.domain.model;
 
-import domain.valueobject.DeliveryAddress;
-import domain.valueobject.Email;
-import domain.valueobject.OrderRef;
-import domain.valueobject.UserId;
+import com.liverpool.orders.domain.valueobject.DeliveryAddress;
+import com.liverpool.orders.domain.valueobject.Email;
+import com.liverpool.orders.domain.valueobject.OrderRef;
+import com.liverpool.orders.domain.valueobject.UserId;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -44,6 +44,19 @@ public class Customer {
                 .email(this.email)
                 .deliveryAddress(this.deliveryAddress)
                 .orders(newOrders)
+                .build();
+    }
+
+    public Customer withSyncedOrders(final List<OrderRef> freshOrderRefs) {
+        Objects.requireNonNull(freshOrderRefs, "freshOrderRefs no puede ser nulo");
+        return new Builder()
+                .userId(this.userId)
+                .firstName(this.firstName)
+                .lastNamePaternal(this.lastNamePaternal)
+                .lastNameMaternal(this.lastNameMaternal)
+                .email(this.email)
+                .deliveryAddress(this.deliveryAddress)
+                .orders(freshOrderRefs)
                 .build();
     }
 

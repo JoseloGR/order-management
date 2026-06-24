@@ -1,0 +1,16 @@
+# Order Management
+
+## Deployment
+Compila y levanta los contenedores ejecutando el siguiente comando en tu terminal:
+```bash
+docker compose up --build
+```
+
+Apaga los servicios manteniendo los datos guardados de MongoDB:
+```bash
+docker compose down
+```
+
+## Open Swagger API Docs
+Abre tu navegador y carga:
+http://localhost:8080/swagger-ui/index.html

@@ -1,6 +1,6 @@
-package domain.port.in;
+package com.liverpool.orders.domain.port.in;
 
-import domain.model.Order;
+import com.liverpool.orders.domain.model.Order;
 
 import java.util.List;
 

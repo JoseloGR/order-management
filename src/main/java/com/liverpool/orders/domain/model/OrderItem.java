@@ -1,4 +1,4 @@
-package domain.model;
+package com.liverpool.orders.domain.model;
 
 public class OrderItem {
     private final String itemId;

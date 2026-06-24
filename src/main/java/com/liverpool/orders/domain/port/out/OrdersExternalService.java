@@ -1,7 +1,7 @@
-package domain.port.out;
+package com.liverpool.orders.domain.port.out;
 
-import domain.model.Order;
-import domain.valueobject.UserId;
+import com.liverpool.orders.domain.model.Order;
+import com.liverpool.orders.domain.valueobject.UserId;
 
 import java.util.List;
 

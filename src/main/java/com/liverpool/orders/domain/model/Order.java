@@ -1,6 +1,6 @@
-package domain.model;
+package com.liverpool.orders.domain.model;
 
-import domain.valueobject.*;
+import com.liverpool.orders.domain.valueobject.*;
 
 import java.util.ArrayList;
 import java.util.Collections;

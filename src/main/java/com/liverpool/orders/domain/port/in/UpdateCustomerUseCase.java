@@ -1,6 +1,6 @@
-package domain.port.in;
+package com.liverpool.orders.domain.port.in;
 
-import domain.model.Customer;
+import com.liverpool.orders.domain.model.Customer;
 
 public interface UpdateCustomerUseCase {
     final class UpdateCustomerDataCommand {

@@ -1,6 +1,12 @@
-package application.mapper;
+package com.liverpool.orders.application.mapper;
+
+import com.liverpool.orders.domain.model.Customer;
+import com.liverpool.orders.domain.model.Order;
+import com.liverpool.orders.domain.model.OrderItem;
+import com.liverpool.orders.domain.valueobject.OrderRef;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public final class CustomerMapper {
 
@@ -176,5 +182,57 @@ public final class CustomerMapper {
         public String getDeliveryStatus() {
             return deliveryStatus;
         }
+    }
+
+    public static CustomerResponse toResponse(final Customer customer) {
+        return new CustomerResponse(
+                customer.getUserId().getValue(),
+                customer.getFirstName(),
+                customer.getLastNamePaternal(),
+                customer.getLastNameMaternal(),
+                customer.getEmail().getValue(),
+                customer.getDeliveryAddress() != null
+                        ? customer.getDeliveryAddress().getStreet()
+                        : null,
+                customer.getOrders().stream()
+                        .map(OrderRef::getValue)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    public static CustomerWithOrdersResponse toResponseWithOrders(
+            final Customer customer,
+            final List<Order> orders) {
+        return new CustomerWithOrdersResponse(
+                toResponse(customer),
+                orders.stream()
+                        .map(CustomerMapper::toOrderResponse)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    public static OrderResponse toOrderResponse(final Order order) {
+        return new OrderResponse(
+                order.getOrderRef().getValue(),
+                order.getUserId().getValue(),
+                order.getOrderStatus().toFormattedString(),
+                order.getSalesChannel().getValue().name().toLowerCase(),
+                order.getStoreName(),
+                order.isMarketPlace(),
+                order.isGiftRegistry(),
+                order.getItems().stream()
+                        .map(CustomerMapper::toItemResponse)
+                        .collect(Collectors.toList())
+        );
+    }
+
+    public static OrderItemResponse toItemResponse(final OrderItem item) {
+        return new OrderItemResponse(
+                item.getItemId(),
+                item.getSkuId(),
+                item.getDisplayName(),
+                item.getQuantity(),
+                item.getDeliveryStatus()
+        );
     }
 }

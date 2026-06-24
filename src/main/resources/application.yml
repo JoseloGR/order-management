@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: order-management
+
+  data:
+    mongodb:
+      uri: ${SPRING_DATA_MONGODB_URI:mongodb://localhost:27017/order_management}
+      database: ${MONGODB_DATABASE:order_management}
+  jackson:
+    use-jackson2-defaults: true
+
+external:
+  services:
+    pedidos:
+      url: ${PEDIDOS_URL:https://6994a4eab081bc23e9c0f61e.mockapi.io/api/v1/pedidos}
+    items:
+      url: ${ITEMS_URL:https://6994a4eab081bc23e9c0f61e.mockapi.io/api/v1/items}
+
+logging:
+  level:
+    com.liverpool.orders: DEBUG
+    org.springframework.web.client: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

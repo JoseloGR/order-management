@@ -1,4 +1,4 @@
-package domain.valueobject;
+package com.liverpool.orders.domain.valueobject;
 
 public final class UserId {
     private final String value;

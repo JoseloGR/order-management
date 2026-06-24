@@ -1,4 +1,4 @@
-package domain.valueobject;
+package com.liverpool.orders.domain.valueobject;
 
 public class OrderRef {
     private final String value;
