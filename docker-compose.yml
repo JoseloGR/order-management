@@ -28,7 +28,7 @@ services:
     ports:
       - "8080:8080"
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://root:secretPassword@mongodb:27017/mi_base_datos?authSource=admin
+      SPRING_DATA_MONGODB_URI: mongodb://root:secretPassword@mongodb:27017/order_management?authSource=admin
       MONGODB_DATABASE: order_management
     depends_on:
       mongodb:
